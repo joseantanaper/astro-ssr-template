@@ -1,0 +1,76 @@
+---
+import Icon from '../../../components/widgets/Icon.astro'
+import NavbarToggler from './NavbarToggler.astro'
+import ThemeToggler from './ThemeToggler.astro'
+import LangToggler from './LangToggler.astro'
+import SidebarLeft from './SidebarLeft.astro'
+import SidebarRight from './SidebarRight.astro'
+import SidebarTop from './SidebarTop.astro'
+import SidebarBottom from './SidebarBottom.astro'
+const { locale, theme } = Astro.locals
+const { locale: _locale, theme: _theme } = Astro.props
+---
+
+<nav
+  class="navbar app-main-navbar bg-body-tertiary fixed-top border-bottom shadow-sm"
+>
+  <!-- Navbar Start -->
+  <div class="container-fluid flex-nowrap">
+    <div class="navbar-brand">
+      <NavbarToggler id="sidebarLeft" icon="bi-layout-sidebar-inset" />
+    </div>
+
+    <!-- Title -->
+    <a class="navbar-brand fw-bolder me-auto text-truncate" href="#"
+      >Sticky top Long Text For Testing</a
+    >
+
+    <div class="vr ms-2 me-2"></div>
+
+    <div class="d-flex me-2">
+      <LangToggler />
+      <ThemeToggler />
+      <NavbarToggler id="sidebarTop" css="btn" icon="bi-arrow-bar-down" />
+      <NavbarToggler id="sidebarBottom" css="btn" icon="bi-arrow-bar-up" />
+    </div>
+
+    <NavbarToggler id="sidebarRight" icon="bi-layout-sidebar-inset-reverse" />
+
+    <SidebarLeft id="sidebarLeft" />
+
+    <SidebarRight id="sidebarRight" />
+
+    <SidebarTop id="sidebarTop" />
+
+    <SidebarBottom id="sidebarBottom" />
+
+    <!-- Navbar End -->
+
+    <style></style>
+
+    <script>
+      import '../../../utils/cookie'
+      import { setCookie } from '../../../utils/cookie'
+
+      const componentInit = () => {
+        console.log('Header', 'componentInit')
+        document
+          .querySelectorAll('button[name="app-locale-es"]')
+          .forEach((button) => {
+            button.addEventListener('click', () => {
+              console.log('Header', 'es')
+              setCookie('locale', 'es')
+            })
+          })
+        document
+          .querySelectorAll('button[name="app-locale-en"]')
+          .forEach((button) => {
+            button.addEventListener('click', () => {
+              console.log('Header', 'en')
+              setCookie('locale', 'en')
+            })
+          })
+      }
+    </script>
+  </div>
+</nav>

@@ -1,0 +1,17 @@
+html[data-bs-theme='dark'] {
+  button.navbar-toggler,
+  .btn {
+    svg {
+      transition: 500ms;
+      filter: drop-shadow(0 1px 0 rgb(0 0 0 / 0.8));
+    }
+  }
+  button.navbar-toggler:hover,
+  .btn:hover {
+    svg {
+      transition: 250ms;
+      filter: drop-shadow(0 0 2px white) drop-shadow(0 0 8px white)
+        drop-shadow(0 1px 0 black);
+    }
+  }
+}

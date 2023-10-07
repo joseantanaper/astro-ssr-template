@@ -1,0 +1,66 @@
+---
+import Icon from '../../../components/widgets/Icon.astro'
+const { locale, theme } = Astro.locals
+---
+
+<button name="app-theme-toggler" type="button" class="btn text-nowrap">
+  <Icon id="bi-sun" style={`${theme === 'light' ? 'display: none;' : ''}`} />
+  <Icon id="bi-moon" style={`${theme === 'dark' ? 'display: none;' : ''}`} />
+</button>
+
+<script>
+  import { setCookie } from '../../../utils/cookie'
+
+  const setTheme = (theme: string) => {
+    if (theme === null || theme === 'light') {
+      document
+        .querySelectorAll(
+          'button[name="app-theme-toggler"] svg[class="bi bi-sun"]'
+        )
+        .forEach((svg) => {
+          svg.setAttribute('style', 'display: none;')
+        })
+      document
+        .querySelectorAll(
+          'button[name="app-theme-toggler"] svg[class="bi bi-moon"]'
+        )
+        .forEach((svg) => {
+          svg.setAttribute('style', 'display: inline;')
+        })
+    } else {
+      document
+        .querySelectorAll(
+          'button[name="app-theme-toggler"] svg[class="bi bi-sun"]'
+        )
+        .forEach((svg) => {
+          svg.setAttribute('style', 'display: inline;')
+        })
+      document
+        .querySelectorAll(
+          'button[name="app-theme-toggler"] svg[class="bi bi-moon"]'
+        )
+        .forEach((svg) => {
+          svg.setAttribute('style', 'display: none;')
+        })
+    }
+    document.documentElement.setAttribute('data-bs-theme', theme)
+  }
+
+  const componentInit = () => {
+    console.log('ThemeToggler', 'componentInit')
+    document
+      .querySelectorAll('button[name="app-theme-toggler"]')
+      .forEach((button) => {
+        button.addEventListener('click', () => {
+          const currentTheme =
+            document.documentElement.getAttribute('data-bs-theme')
+          const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+          setTheme(newTheme)
+          console.log('ThemeToggler', 'click', currentTheme, newTheme)
+          setCookie('theme', newTheme)
+        })
+      })
+  }
+  // componentInit()
+  document.addEventListener('astro:page-load', componentInit)
+</script>

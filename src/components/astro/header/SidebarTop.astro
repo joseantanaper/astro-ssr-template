@@ -1,0 +1,20 @@
+---
+import Icon from '../../widgets/Icon.astro'
+const { id } = Astro.props
+---
+
+<!-- Menu Bottom -->
+<div
+  class="offcanvas offcanvas-top border-top shadow"
+  tabindex="-1"
+  id={id}
+  aria-labelledby={`${id}Label`}
+>
+  <div class="offcanvas-header bg-body-tertiary border-bottom shadow-sm">
+    <h5 class="offcanvas-title" id={`${id}Label`}>Sidebar Top</h5>
+    <button class="navbar-toggler" type="button" data-bs-dismiss="offcanvas">
+      <Icon id="bi-chevron-bar-up" />
+    </button>
+  </div>
+   ***
+</div>

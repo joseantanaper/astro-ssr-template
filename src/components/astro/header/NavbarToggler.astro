@@ -1,0 +1,15 @@
+---
+import Icon from '../../../components/widgets/Icon.astro'
+const { id, icon, css = 'navbar-toggler' } = Astro.props
+---
+
+<button
+  class={css}
+  type="button"
+  data-bs-toggle="offcanvas"
+  data-bs-target={`#${id}`}
+  aria-controls={`#${id}`}
+  aria-label="Toggle navigation"
+>
+  <Icon id={icon} />
+</button>

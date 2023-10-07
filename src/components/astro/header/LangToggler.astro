@@ -1,0 +1,40 @@
+---
+import Icon from '../../../components/widgets/Icon.astro'
+const { locale, theme } = Astro.locals
+---
+
+<div class="input-group inline flex-nowrap">
+  <label class="input-group-text"> <Icon id="bi-translate" /></label>
+
+  <select
+    name="app-locale-toggler"
+    class="form-select"
+    style="min-width: 70px; max-width: 70px; width: 70px; display: inline-block;"
+    aria-label="Language"
+  >
+    <option value="es" selºected={locale == 'es'}>ES</option>
+    <option value="en" selected={locale == 'en'}>EN</option>
+  </select>
+</div>
+
+<script>
+  import { setCookie } from '../../../utils/cookie'
+
+  const componentInit = () => {
+    console.log('LangToggler', 'componentInit')
+    document
+      .querySelectorAll('select[name="app-locale-toggler"]')
+      .forEach((button) => {
+        button.addEventListener('change', (e: Event) => {
+          console.log(
+            'LangToggler',
+            'change',
+            (e.target as HTMLSelectElement).value
+          )
+          setCookie('locale', (e.target as HTMLSelectElement).value)
+        })
+      })
+  }
+  // componentInit()
+  document.addEventListener('astro:page-load', componentInit)
+</script>

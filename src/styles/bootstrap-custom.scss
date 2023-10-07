@@ -1,0 +1,99 @@
+// Default variable overrides
+// $modal-backdrop-bg: black;
+// $modal-backdrop-opacity: 0.6;
+
+$border-radius: 1px;
+
+$dropdown-item-padding-y: 0.6rem;
+
+// Bootstrap imports
+@import '/node_modules/bootstrap-icons/font/bootstrap-icons.css';
+@import '/node_modules/bootstrap/scss/bootstrap';
+@import './bootstrap-dark.scss';
+@import './bootstrap-light.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px;
+  // border-top: 121px solid transparent;
+  border-top: 56px solid transparent;
+  overflow-y: scroll;
+}
+
+.offcanvas-backdrop.show {
+  opacity: 1;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(8px);
+}
+
+nav.navbar,
+.offcanvas-header {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  height: 56px;
+}
+nav.navbar.app-main-navbar {
+}
+nav.navbar.app-sub-navbar {
+  opacity: 0.9;
+  position: fixed;
+  width: 100vw;
+  top: 65px;
+  margin-top: 0px;
+  z-index: 1;
+}
+
+.btn {
+  svg {
+    // vertical-align: top;
+    // margin: 8px 0 -2px 0 !important;
+    width: 16px;
+    height: 16px;
+  }
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+  // padding: 0px !important;
+  // margin: 0px !important;
+}
+
+.navbar-toggler {
+  // background: yellow;
+  padding: 0px !important;
+  margin: 0px !important;
+  min-width: 50px;
+  height: 46px;
+  svg {
+    margin: 0px !important;
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.btn {
+  // background: yellow;
+  svg {
+    margin-top: -5px;
+  }
+}
+
+// @keyframes globalFadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
+
+/*
+html {
+  animation-name: globalFadeIn;
+  animation-duration: 50ms;
+}
+*/

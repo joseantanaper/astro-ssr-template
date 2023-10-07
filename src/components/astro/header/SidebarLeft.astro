@@ -1,0 +1,59 @@
+---
+import Icon from '../../../components/widgets/Icon.astro'
+const { id } = Astro.props
+---
+
+<!-- Menu Left -->
+<div
+  class="offcanvas offcanvas-start border-end shadow"
+  tabindex="-1"
+  id={id}
+  aria-labelledby={`${id}Label`}
+>
+  <div class="offcanvas-header bg-body-tertiary border-bottom shadow-sm">
+    <button class="navbar-toggler" type="button" data-bs-dismiss="offcanvas">
+      <Icon id="bi-chevron-bar-left" />
+    </button>
+    <h5 class="offcanvas-title" id={`${id}Label`}>Sidebar Left</h5>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Dropdown
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li>
+            <hr class="dropdown-divider" />
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <form class="d-flex mt-3" role="search">
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+</div>
